@@ -13,19 +13,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.currencyexchange.R;
-import com.example.currencyexchange.ui.viewModels.DashboardViewModel;
+import com.example.currencyexchange.ui.viewModels.ExchangeRatesViewModel;
 
-public class DashboardFragment extends Fragment {
+public class ExchangeRatesFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private ExchangeRatesViewModel exchangeRatesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        exchangeRatesViewModel =
+                new ViewModelProvider(this).get(ExchangeRatesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
         final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        exchangeRatesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
