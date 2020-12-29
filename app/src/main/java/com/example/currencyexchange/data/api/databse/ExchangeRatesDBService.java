@@ -1,4 +1,4 @@
 package com.example.currencyexchange.data.api.databse;
 
-public class Database{
+public class ExchangeRatesDBService {
 }
