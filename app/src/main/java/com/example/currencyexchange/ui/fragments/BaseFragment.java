@@ -1,4 +1,6 @@
 package com.example.currencyexchange.ui.fragments;
 
-public class BaseFragment {
+import dagger.android.support.DaggerFragment;
+
+public class BaseFragment extends DaggerFragment {
 }

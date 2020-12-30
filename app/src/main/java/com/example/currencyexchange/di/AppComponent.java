@@ -5,6 +5,9 @@ import com.example.currencyexchange.di.modules.ActivityModule;
 import com.example.currencyexchange.di.modules.ContractsModule;
 import com.example.currencyexchange.di.modules.DataModule;
 import com.example.currencyexchange.di.modules.FragmentsModule;
+import com.example.currencyexchange.ui.fragments.ExchangeRatesTab;
+import com.example.currencyexchange.ui.fragments.ExchangeRatesTab_Factory;
+import com.example.currencyexchange.ui.fragments.SavedCoursesTab;
 
 import javax.inject.Singleton;
 
@@ -21,7 +24,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         DataModule.class,
         ActivityModule.class,
         FragmentsModule.class,
-        ContractsModule.class
+        ContractsModule.class,
+
 })
 public interface AppComponent {
     void inject(CurrencyExchangeApp currencyExchangeApp);
