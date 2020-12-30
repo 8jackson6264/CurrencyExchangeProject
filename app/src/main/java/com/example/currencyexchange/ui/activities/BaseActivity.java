@@ -1,4 +1,6 @@
 package com.example.currencyexchange.ui.activities;
 
-public class BaseActivity {
+import dagger.android.support.DaggerAppCompatActivity;
+
+public abstract class BaseActivity extends DaggerAppCompatActivity {
 }
