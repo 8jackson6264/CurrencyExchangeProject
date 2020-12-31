@@ -3,6 +3,7 @@ package com.example.currencyexchange.ui.activities;
 import android.os.Bundle;
 
 import com.example.currencyexchange.R;
+import com.example.currencyexchange.adapters.TabAdapter;
 import com.example.currencyexchange.data.api.ExchangeRatesService;
 import com.example.currencyexchange.ui.fragments.ExchangeRatesTab;
 import com.example.currencyexchange.ui.fragments.SavedCoursesTab;
@@ -33,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
     }
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private void managingFragments() {
         TabLayout tabLayout = findViewById(R.id.tabs);
         TabAdapter tabAdapter = new TabAdapter(this.getSupportFragmentManager(), getLifecycle(),
-                dailyQuoteFragment, myQuotesFragment);
+                exchangeRatesTab, savedCoursesTab);
         ViewPager2 viewPager2 = findViewById(R.id.viewpager);
         viewPager2.setAdapter(tabAdapter);
         viewPager2.setUserInputEnabled(false);
