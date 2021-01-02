@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.adapters.TabAdapter;
 import com.example.currencyexchange.data.api.ExchangeRatesService;
+import com.example.currencyexchange.databinding.ActivityMainBinding;
 import com.example.currencyexchange.ui.fragments.ExchangeRatesTab;
 import com.example.currencyexchange.ui.fragments.SavedCoursesTab;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -20,7 +21,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Inject
     ExchangeRatesTab exchangeRatesTab;
@@ -41,16 +42,18 @@ public class MainActivity extends BaseActivity {
     private void managingTabs() {
         TabAdapter tabAdapter = new TabAdapter(this.getSupportFragmentManager(), getLifecycle(),
                 exchangeRatesTab, savedCoursesTab);
-        ViewPager2 viewPager2 = findViewById(R.id.viewpager);
+        ViewPager2 viewPager2 = binding.viewpager;
+        TabLayout tabLayout = findViewById(R.id.tabs);
         viewPager2.setAdapter(tabAdapter);
         viewPager2.setUserInputEnabled(false);
-        TabLayout tabLayout = findViewById(R.id.tabs);
         TabLayoutMediator mediator = new TabLayoutMediator(tabLayout, viewPager2,
-                this::setTextToTheTabLayoutDependingOnThePosition);
+                this::setTextToTabs);
         mediator.attach();
+
+        binding.viewpager.setAdapter();
     }
 
-    private void setTextToTheTabLayoutDependingOnThePosition(TabLayout.Tab tab, int position) {
+    private void setTextToTabs(TabLayout.Tab tab, int position) {
         switch (position) {
             case 0:
                 tab.setText("Exchange Rates");
