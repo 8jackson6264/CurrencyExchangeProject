@@ -42,15 +42,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     private void managingTabs() {
         TabAdapter tabAdapter = new TabAdapter(this.getSupportFragmentManager(), getLifecycle(),
                 exchangeRatesTab, savedCoursesTab);
-        ViewPager2 viewPager2 = binding.viewpager;
-        TabLayout tabLayout = findViewById(R.id.tabs);
-        viewPager2.setAdapter(tabAdapter);
-        viewPager2.setUserInputEnabled(false);
-        TabLayoutMediator mediator = new TabLayoutMediator(tabLayout, viewPager2,
+        binding.viewpager.setAdapter(tabAdapter);
+        binding.viewpager.setUserInputEnabled(false);
+        TabLayoutMediator mediator = new TabLayoutMediator(binding.tabs, binding.viewpager,
                 this::setTextToTabs);
         mediator.attach();
-
-        binding.viewpager.setAdapter();
     }
 
     private void setTextToTabs(TabLayout.Tab tab, int position) {
