@@ -9,13 +9,13 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lightBlue"
+
         app:layout_constraintTop_toTopOf="parent"
-        app:tabTextColor="@color/darkBlue" />
+        />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager"
-        android:background="@color/darkBlue"
+        android:background="@color/lightBlue"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_anchorGravity="bottom"
@@ -28,6 +28,7 @@
         android:background="@color/darkBlue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         app:layout_constraintTop_toTopOf="parent">
     </androidx.appcompat.widget.Toolbar>
 

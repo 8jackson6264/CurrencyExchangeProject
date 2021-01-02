@@ -20,31 +20,31 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import javax.inject.Inject;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Inject
     ExchangeRatesTab exchangeRatesTab;
     @Inject
     SavedCoursesTab savedCoursesTab;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+    @Override
+    protected void onActivityCreated() {
+        managingTabs();
     }
 
+    @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
     }
 
-    private void managingFragments() {
-        TabLayout tabLayout = findViewById(R.id.tabs);
+    private void managingTabs() {
         TabAdapter tabAdapter = new TabAdapter(this.getSupportFragmentManager(), getLifecycle(),
                 exchangeRatesTab, savedCoursesTab);
         ViewPager2 viewPager2 = findViewById(R.id.viewpager);
         viewPager2.setAdapter(tabAdapter);
         viewPager2.setUserInputEnabled(false);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         TabLayoutMediator mediator = new TabLayoutMediator(tabLayout, viewPager2,
                 this::setTextToTheTabLayoutDependingOnThePosition);
         mediator.attach();
@@ -53,14 +53,15 @@ public class MainActivity extends AppCompatActivity {
     private void setTextToTheTabLayoutDependingOnThePosition(TabLayout.Tab tab, int position) {
         switch (position) {
             case 0:
-                tab.setText("Daily Quote");
+                tab.setText("Exchange Rates");
                 break;
             case 1:
-                tab.setText("My Quotes");
+                tab.setText("Saved Courses");
                 break;
             default:
                 throw new IllegalArgumentException("unavailable tab");
         }
     }
+
 
 }

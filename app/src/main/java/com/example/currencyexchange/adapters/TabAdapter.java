@@ -13,8 +13,8 @@ import javax.inject.Inject;
 
 public class TabAdapter extends FragmentStateAdapter {
 
-    ExchangeRatesTab exchangeRatesTab;
-    SavedCoursesTab savedCoursesTab;
+    private ExchangeRatesTab exchangeRatesTab;
+    private SavedCoursesTab savedCoursesTab;
 
     @Inject
     public TabAdapter(FragmentManager fragmentManager,
@@ -22,8 +22,8 @@ public class TabAdapter extends FragmentStateAdapter {
                       ExchangeRatesTab exchangeRatesTab,
                       SavedCoursesTab savedCoursesTab) {
         super(fragmentManager, lifecycle);
-        this.exchangeRatesTab = exchangeRatesTab;
         this.savedCoursesTab = savedCoursesTab;
+        this.exchangeRatesTab = exchangeRatesTab;
     }
 
     @NonNull
