@@ -1,24 +1,12 @@
 package com.example.currencyexchange.ui.activities;
 
-import android.os.Bundle;
-
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.adapters.TabAdapter;
-import com.example.currencyexchange.data.api.ExchangeRatesService;
 import com.example.currencyexchange.databinding.ActivityMainBinding;
 import com.example.currencyexchange.ui.fragments.ExchangeRatesTab;
 import com.example.currencyexchange.ui.fragments.SavedCoursesTab;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.viewpager2.widget.ViewPager2;
-
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
@@ -58,7 +46,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 tab.setText("Saved Courses");
                 break;
             default:
-                throw new IllegalArgumentException("unavailable tab");
+                throw new IllegalArgumentException("Unavailable tab");
         }
     }
 
