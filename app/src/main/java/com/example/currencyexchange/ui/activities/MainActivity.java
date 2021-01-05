@@ -1,5 +1,8 @@
 package com.example.currencyexchange.ui.activities;
 
+import android.view.Menu;
+import android.view.MenuInflater;
+
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.adapters.TabAdapter;
 import com.example.currencyexchange.databinding.ActivityMainBinding;
@@ -20,12 +23,19 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void onActivityCreated() {
+        
         managingTabs();
     }
 
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void managingTabs() {
