@@ -32,6 +32,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 exchangeRatesTab, savedCoursesTab);
         binding.viewpager.setAdapter(tabAdapter);
         binding.viewpager.setUserInputEnabled(false);
+        
         TabLayoutMediator mediator = new TabLayoutMediator(binding.tabs, binding.viewpager,
                 this::setTextToTabs);
         mediator.attach();
