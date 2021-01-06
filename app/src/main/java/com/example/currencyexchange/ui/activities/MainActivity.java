@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         TabAdapter tabAdapter = new TabAdapter(this.getSupportFragmentManager(), getLifecycle(),
                 exchangeRatesTab, savedCoursesTab);
         binding.viewpager.setAdapter(tabAdapter);
-        binding.viewpager.setUserInputEnabled(false);
+        binding.viewpager.setUserInputEnabled(true);
         TabLayoutMediator mediator = new TabLayoutMediator(binding.tabs, binding.viewpager,
                 this::setTextToTabs);
         mediator.attach();

@@ -10,4 +10,5 @@
     <color name="lightBlue">#77b3f2</color>
     <color name="darkBlue">#021B35</color>
     <color name="blue">#155dab</color>
+    <color name="blueFaded">#855694C5</color>
 </resources>
