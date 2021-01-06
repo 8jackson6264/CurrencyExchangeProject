@@ -14,7 +14,9 @@
             android:background="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:tabSelectedTextColor="@color/blue"
-            app:tabTextColor="@color/lightBlue" />
+            app:tabTextColor="@color/lightBlue"
+            app:tabIndicatorColor="@color/blue"
+            />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"
