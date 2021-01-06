@@ -29,12 +29,12 @@
            app:layout_constraintTop_toTopOf="@+id/search_field"
             app:layout_constraintStart_toEndOf="@+id/search_field" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/exchange_rates_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_field" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/exchange_rates_recycler_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/search_field" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,8 +3,11 @@ package com.example.currencyexchange.ui.activities;
 import android.view.Menu;
 import android.view.MenuInflater;
 
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.adapters.TabAdapter;
+import com.example.currencyexchange.data.ExchangeRate;
 import com.example.currencyexchange.databinding.ActivityMainBinding;
 import com.example.currencyexchange.ui.fragments.ExchangeRatesTab;
 import com.example.currencyexchange.ui.fragments.SavedCoursesTab;
@@ -23,7 +26,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void onActivityCreated() {
-        
         managingTabs();
     }
 
@@ -43,7 +45,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 exchangeRatesTab, savedCoursesTab);
         binding.viewpager.setAdapter(tabAdapter);
         binding.viewpager.setUserInputEnabled(false);
-
         TabLayoutMediator mediator = new TabLayoutMediator(binding.tabs, binding.viewpager,
                 this::setTextToTabs);
         mediator.attach();
