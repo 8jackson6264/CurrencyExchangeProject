@@ -86,4 +86,116 @@ public class Rates {
 
     @SerializedName(value = "PLN")
     private double polishZloty;
+
+    public double getCanadianDollar() {
+        return canadianDollar;
+    }
+
+    public double getHongKongDollar() {
+        return hongKongDollar;
+    }
+
+    public double getIcelandicKrona() {
+        return icelandicKrona;
+    }
+
+    public double getPhilippinePeso() {
+        return philippinePeso;
+    }
+
+    public double getDanishKrone() {
+        return danishKrone;
+    }
+
+    public double getHungarianForint() {
+        return hungarianForint;
+    }
+
+    public double getCzechKoruna() {
+        return czechKoruna;
+    }
+
+    public double getGreatBritainPound() {
+        return greatBritainPound;
+    }
+
+    public double getRomanianLeu() {
+        return romanianLeu;
+    }
+
+    public double getSwedishKrona() {
+        return swedishKrona;
+    }
+
+    public double getIndonesianRupiah() {
+        return indonesianRupiah;
+    }
+
+    public double getIndianRupee() {
+        return indianRupee;
+    }
+
+    public double getBrazilianReal() {
+        return brazilianReal;
+    }
+
+    public double getRussianRuble() {
+        return russianRuble;
+    }
+
+    public double getEuro() {
+        return euro;
+    }
+
+    public double getMalaysianRinggit() {
+        return malaysianRinggit;
+    }
+
+    public double getTurkishLira() {
+        return turkishLira;
+    }
+
+    public double getChineseYuan() {
+        return chineseYuan;
+    }
+
+    public double getNorwegianKrone() {
+        return norwegianKrone;
+    }
+
+    public double getNewZealandDollar() {
+        return newZealandDollar;
+    }
+
+    public double getSouthAfricanRand() {
+        return southAfricanRand;
+    }
+
+    public double getUnitedStatesDollar() {
+        return unitedStatesDollar;
+    }
+
+    public double getMexicanPeso() {
+        return mexicanPeso;
+    }
+
+    public double getSingaporeDollar() {
+        return singaporeDollar;
+    }
+
+    public double getAustralianDollar() {
+        return australianDollar;
+    }
+
+    public double getIsraeliNewShekel() {
+        return israeliNewShekel;
+    }
+
+    public double getSouthKoreanWon() {
+        return southKoreanWon;
+    }
+
+    public double getPolishZloty() {
+        return polishZloty;
+    }
 }

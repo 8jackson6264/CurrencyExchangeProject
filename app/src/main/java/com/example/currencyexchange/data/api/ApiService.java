@@ -8,7 +8,4 @@ import retrofit2.http.GET;
 public interface ApiService {
     @GET("https://api.exchangeratesapi.io/latest?base=BGN")
     Call<ExchangeRate> getAllExchangeRates();
-
-    @GET("")
-    Call<ExchangeRate> get2();
 }
