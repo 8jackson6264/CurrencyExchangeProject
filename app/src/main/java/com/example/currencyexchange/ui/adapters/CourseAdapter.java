@@ -5,13 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.data.Course;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +31,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        
+        holder.txtCourse.setText(String.valueOf(courses.get(position).getCourse()));
+        holder.txtCurrency.setText(courses.get(position).getCurrencyName());
     }
 
     @Override
@@ -43,17 +41,21 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        Button btnHeart;
+        Button btnLike;
+        TextView txtOne;
         TextView txtBaseCurrency;
-        TextView txtCourseCurrency;
-        TextView txt;
+        TextView txtEquals;
+        TextView txtCourse;
+        TextView txtCurrency;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            btnHeart = itemView.findViewById(R.id.btn_like);
+            btnLike = itemView.findViewById(R.id.btn_like);
+            txtOne = itemView.findViewById(R.id.txt_one);
             txtBaseCurrency = itemView.findViewById(R.id.txt_base_currency);
-            txtCourseCurrency = itemView.findViewById(R.id.txt_exchange_rate);
-            txt = itemView.findViewById(R.id.one_bgn_equals);
+            txtEquals = itemView.findViewById(R.id.txt_equals);
+            txtCourse = itemView.findViewById(R.id.txt_course);
+            txtCurrency = itemView.findViewById(R.id.txt_currency);
 
         }
     }

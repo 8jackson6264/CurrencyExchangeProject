@@ -1,6 +1,12 @@
 package com.example.currencyexchange.core.contracts;
 
+import android.content.Context;
+
 public interface ExchangeRatesContract {
-    public interface ExchangeRatesTabPresenterListener{}
-    public interface ExchangeRatesTabViewListener{}
+    interface ExchangeRatesTabPresenterListener {
+        void getCoursesFromApi(Context context);
+    }
+
+    interface ExchangeRatesTabViewListener {
+    }
 }

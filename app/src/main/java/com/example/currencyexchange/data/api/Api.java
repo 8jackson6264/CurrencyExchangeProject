@@ -14,7 +14,7 @@ public class Api {
 
     private Api() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(" https://api.exchangeratesapi.io")
+                .baseUrl(" https://api.exchangeratesapi.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -28,8 +28,8 @@ public class Api {
         return instance;
     }
 
-    public void getAllExchangeRates(final ApiListener listener) {
-        service.getAllExchangeRates().enqueue(new Callback<ExchangeRate>() {
+    public void getAllExchangeRatesFromBGN(final ApiListener listener) {
+        service.getAllExchangeRatesFromBGN().enqueue(new Callback<ExchangeRate>() {
             @Override
             public void onResponse(Call<ExchangeRate> call, Response<ExchangeRate> response) {
                 if (response.isSuccessful()) {
@@ -46,10 +46,24 @@ public class Api {
         });
     }
 
+    public void getAllExchangeRatesFromEUR(final ApiListener listener){
+        service.getAllExchangeRatesFromEUR().enqueue(new Callback<ExchangeRate>() {
+            @Override
+            public void onResponse(Call<ExchangeRate> call, Response<ExchangeRate> response) {
+                if(response.isSuccessful()){
+                    listener.onExchangeRateReceived(response.body());
+                } else listener.onFailure();
+            }
+
+            @Override
+            public void onFailure(Call<ExchangeRate> call, Throwable t) {
+                listener.onFailure();
+            }
+        });
+    }
+
     public interface ApiListener {
-
-        void onFailure();
-
         void onExchangeRateReceived(ExchangeRate exchangeRate);
+        void onFailure();
     }
 }

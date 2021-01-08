@@ -4,6 +4,7 @@ public class Course {
     private String currencyName;
     private double course;
 
+
     public Course(String currencyName, double course) {
         this.currencyName = currencyName;
         this.course = course;
@@ -24,4 +25,5 @@ public class Course {
     public void setCourse(double course) {
         this.course = course;
     }
+
 }
