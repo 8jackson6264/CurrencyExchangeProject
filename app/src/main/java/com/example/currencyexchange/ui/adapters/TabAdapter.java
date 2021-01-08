@@ -1,4 +1,4 @@
-package com.example.currencyexchange.adapters;
+package com.example.currencyexchange.ui.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

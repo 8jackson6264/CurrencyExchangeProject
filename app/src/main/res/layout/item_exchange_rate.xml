@@ -1,37 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/one_bgn_equals"
+        android:id="@+id/txt_one"
         android:layout_width="wrap_content"
-        android:layout_height="160dp"
+        android:layout_height="100dp"
         android:paddingTop="50dp"
-        android:text="1.0 BGN \n equals "
+        android:text="1.00  "
         android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toStartOf="@+id/txt_base_currency"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_base_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:paddingTop="50dp"
+        android:text="BGN"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_exchange_rate"
+        android:id="@+id/txt_equals"
         android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:text="xxxyyyy something "
+        android:layout_height="60dp"
+        android:paddingTop="10dp"
+        android:text="="
         android:textAlignment="center"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/one_bgn_equals" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_base_currency" />
+
+    <TextView
+        android:id="@+id/txt_course"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:text="2.00  "
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintStart_toStartOf="@id/txt_one"
+        app:layout_constraintTop_toBottomOf="@+id/txt_equals" />
+
+    <TextView
+        android:id="@+id/txt_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:text="EUR"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintStart_toEndOf="@id/txt_course"
+        app:layout_constraintTop_toBottomOf="@+id/txt_equals" />
 
     <Button
+        android:id="@+id/btn_like"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="25dp"
-        app:layout_constraintTop_toBottomOf="@id/txt_exchange_rate"
+        app:layout_constraintTop_toBottomOf="@id/txt_course"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/heart_empty"/>
 

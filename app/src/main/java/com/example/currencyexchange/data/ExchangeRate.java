@@ -2,6 +2,8 @@ package com.example.currencyexchange.data;
 
 import com.google.gson.annotations.SerializedName;
 
+import javax.inject.Inject;
+
 public class ExchangeRate {
 
     @SerializedName(value = "base")

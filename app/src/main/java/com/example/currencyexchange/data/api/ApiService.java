@@ -6,9 +6,9 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface ApiService {
-    @GET("https://api.exchangeratesapi.io/latest?base=BGN")
-    Call<ExchangeRate> getAllExchangeRates();
+    @GET("latest?base=BGN")
+    Call<ExchangeRate> getAllExchangeRatesFromBGN();
 
-    @GET("")
-    Call<ExchangeRate> get2();
+    @GET("latest?base=EUR")
+    Call<ExchangeRate> getAllExchangeRatesFromEUR();
 }
