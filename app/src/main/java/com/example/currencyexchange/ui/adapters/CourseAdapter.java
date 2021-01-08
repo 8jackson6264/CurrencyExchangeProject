@@ -12,12 +12,14 @@ import com.example.currencyexchange.data.Course;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
 
     List<Course> courses = new ArrayList<>();
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+        notifyDataSetChanged();
     }
 
     @NonNull

@@ -16,11 +16,20 @@ import com.example.currencyexchange.utils.CourseUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class ExchangeRatesPresenter implements ExchangeRatesContract.ExchangeRatesTabPresenterListener {
 
     private List<Course> coursesToBGN = new ArrayList<>();
     private List<Course> coursesToEuro = new ArrayList<>();
 
+    ExchangeRatesContract.ExchangeRatesTabViewListener exchangeRatesTabViewListener;
+
+
+    @Override
+    public void setViewListener(ExchangeRatesContract.ExchangeRatesTabViewListener viewListener) {
+        this.exchangeRatesTabViewListener = viewListener;
+    }
 
     @Override
     public void getCoursesFromApi(Context context) {
@@ -28,6 +37,7 @@ public class ExchangeRatesPresenter implements ExchangeRatesContract.ExchangeRat
             @Override
             public void onExchangeRateReceived(ExchangeRate exchangeRate) {
                 coursesToBGN = CourseUtil.recastFromRatesToCourseList(exchangeRate.getRates());
+                exchangeRatesTabViewListener.setCourseAdapterListToBGN(coursesToBGN);
             }
 
             @Override
@@ -40,6 +50,7 @@ public class ExchangeRatesPresenter implements ExchangeRatesContract.ExchangeRat
             @Override
             public void onExchangeRateReceived(ExchangeRate exchangeRate) {
                 coursesToEuro = CourseUtil.recastFromRatesToCourseList(exchangeRate.getRates());
+               // exchangeRatesTabViewListener.setCourseAdapterListToEUR(coursesToEuro);
             }
 
             @Override
@@ -47,6 +58,8 @@ public class ExchangeRatesPresenter implements ExchangeRatesContract.ExchangeRat
                 Toast.makeText(context, "Some error with the servers occurred", Toast.LENGTH_LONG).show();
             }
         });
+
+
     }
 
 
