@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/txt_base_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:paddingTop="50dp"
+        android:text="1.0 BGN"
+        android:textAlignment="center"
+        android:textSize="27sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/one_bgn_equals"
         android:layout_width="wrap_content"
-        android:layout_height="160dp"
-        android:paddingTop="50dp"
-        android:text="1.0 BGN \n equals "
+        android:layout_height="80dp"
+        android:paddingTop="10dp"
+        android:text="equals "
         android:textAlignment="center"
-        android:textSize="35sp"
+        android:textSize="27sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_base_currency" />
 
     <TextView
         android:id="@+id/txt_exchange_rate"
@@ -28,6 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/one_bgn_equals" />
 
     <Button
+        android:id="@+id/btn_like"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="25dp"

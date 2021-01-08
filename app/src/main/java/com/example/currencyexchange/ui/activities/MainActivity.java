@@ -1,14 +1,10 @@
 package com.example.currencyexchange.ui.activities;
 
 import android.view.Menu;
-import android.view.MenuInflater;
-
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.currencyexchange.R;
-import com.example.currencyexchange.adapters.TabAdapter;
-import com.example.currencyexchange.data.ExchangeRate;
 import com.example.currencyexchange.databinding.ActivityMainBinding;
+import com.example.currencyexchange.ui.adapters.TabAdapter;
 import com.example.currencyexchange.ui.fragments.ExchangeRatesTab;
 import com.example.currencyexchange.ui.fragments.SavedCoursesTab;
 import com.google.android.material.tabs.TabLayout;

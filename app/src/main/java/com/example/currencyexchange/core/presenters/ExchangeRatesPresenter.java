@@ -3,6 +3,7 @@ package com.example.currencyexchange.core.presenters;
 import com.example.currencyexchange.core.contracts.ExchangeRatesContract;
 import com.example.currencyexchange.data.Course;
 import com.example.currencyexchange.data.Rates;
+import com.example.currencyexchange.ui.adapters.CourseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +43,9 @@ public class ExchangeRatesPresenter implements ExchangeRatesContract.ExchangeRat
         return courses;
     }
 
+    CourseAdapter courseAdapter = new CourseAdapter();
 
-}
+//    void attachAdapter(){
+//        courseAdapter.setCourses(recastFromRatesToCourseList());
+    }
+
