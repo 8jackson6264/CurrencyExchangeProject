@@ -1,5 +1,6 @@
 package com.example.currencyexchange.data.db;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.currencyexchange.data.Course;
@@ -9,8 +10,8 @@ import java.util.List;
 public class CourseDBService {
     private final CourseDAO courseDAO;
 
-    public CourseDBService(CourseDAO courseDAO) {
-        this.courseDAO = courseDAO;
+    public CourseDBService(Context context) {
+        this.courseDAO = Database.getInstance(context).courseDAO();
     }
 
     public void getAllCourses(DataListener<List<Course>> dataListener) {
@@ -53,5 +54,5 @@ public class CourseDBService {
     public interface DataListener<T> {
         void onData(T data);
     }
-    
+
 }

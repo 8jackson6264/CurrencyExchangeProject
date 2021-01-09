@@ -10,12 +10,28 @@ public class Course {
     private String currencyName;
     @ColumnInfo(name = "course")
     private double course;
+
+    public String getBase() {
+        return base;
+    }
+
     @ColumnInfo(name = "base")
     private String base;
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    public void setBase(String base) {
+        this.base = base;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Course(String currencyName, double course) {
         this.currencyName = currencyName;

@@ -22,14 +22,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void onActivityCreated() {
-        managingTabs();
+            managingTabs();
     }
 
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
     }
-
 
 
     private void managingTabs() {
@@ -53,6 +52,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
             default:
                 throw new IllegalArgumentException("Unavailable tab");
         }
+    }
+
+    @Override
+    public boolean isNetworkConnected() {
+        return super.isNetworkConnected();
     }
 
 
