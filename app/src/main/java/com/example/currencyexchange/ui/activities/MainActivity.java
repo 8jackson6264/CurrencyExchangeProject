@@ -1,6 +1,6 @@
 package com.example.currencyexchange.ui.activities;
 
-import android.view.Menu;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.databinding.ActivityMainBinding;
@@ -23,6 +23,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     @Override
     protected void onActivityCreated() {
             managingTabs();
+            swipeToRefresh();
     }
 
     @Override
@@ -59,5 +60,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         return super.isNetworkConnected();
     }
 
+    public void swipeToRefresh() {
+        SwipeRefreshLayout pullToRefresh = findViewById(R.id.swipeRefresh);
+        pullToRefresh.setOnRefreshListener(() -> {
+            getLayoutRes();
+            pullToRefresh.setRefreshing(false);
+        });
 
+
+    }
 }

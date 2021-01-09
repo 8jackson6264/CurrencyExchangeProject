@@ -1,5 +1,7 @@
 package com.example.currencyexchange.ui.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
@@ -15,6 +17,7 @@ import com.example.currencyexchange.databinding.TabExchangeRatesBinding;
 import com.example.currencyexchange.ui.adapters.CourseAdapter;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -25,6 +28,11 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
     @Inject
     ExchangeRatesContract.ExchangeRatesTabPresenterListener exchangeRatesTabPresenterListener;
     private String base = "BGN";
+
+//    SharedPreferences sharedPreferences;
+//    public static final String MY_PREFERENCE = "myPreference";
+//    public static final String BASE = "Base";
+
 
 
     @Inject
@@ -38,10 +46,23 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
 
     @Override
     public void onFragmentCreated() {
+//        sharedPreferences = requireActivity().getSharedPreferences(MY_PREFERENCE, Context.MODE_PRIVATE);
+
         exchangeRatesTabPresenterListener.setViewListener(this);
         setRecyclerView();
         setSearchListener();
     }
+
+//    private void saveCurrencyPreference() {
+//
+//        if (sharedPreferences.contains(BASE)){
+//            base = sharedPreferences.getString(BASE, "BGN");
+//        } else{
+//            SharedPreferences.Editor editor = myPreference.edit();
+//            editor.putInt();
+//            editor.apply();
+//        }
+//    }
 
     @Override
     public void setOptionsMenu(Menu menu) {
