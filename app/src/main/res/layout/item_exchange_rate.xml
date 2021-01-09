@@ -38,6 +38,7 @@
         android:layout_height="60dp"
         android:paddingTop="10dp"
         android:text="="
+        android:paddingStart="20dp"
         android:textAlignment="center"
         android:textSize="35sp"
         app:layout_constraintStart_toEndOf="@id/txt_one"
