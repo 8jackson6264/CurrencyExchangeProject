@@ -93,6 +93,7 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
     @Override
     public void setCourseAdapterList(List<Course> courses) {
         courseAdapter.setCourses(courses);
+        courseAdapter.setBase(base);
     }
 
 

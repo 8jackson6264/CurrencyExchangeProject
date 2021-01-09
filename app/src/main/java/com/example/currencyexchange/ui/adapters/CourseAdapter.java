@@ -22,6 +22,11 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
     List<Course> courses = new ArrayList<>();
     List<Course> coursesListFiltered = new ArrayList<>();
+    private String base;
+
+    public void setBase(String base) {
+        this.base = base;
+    }
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
@@ -42,6 +47,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtCourse.setText(String.valueOf(coursesListFiltered.get(position).getCourse()));
         holder.txtCurrency.setText(coursesListFiltered.get(position).getCurrencyName());
+        holder.txtBaseCurrency.setText(base);
     }
 
     @Override
