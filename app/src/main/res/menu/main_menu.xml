@@ -7,6 +7,14 @@
         android:icon="@drawable/ic_baseline_euro_24"
         android:title="eur"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/bgn"
+        android:icon="@drawable/bgn"
+        android:iconTint="@color/white"
+        android:title="bgn"
+        app:showAsAction="always" />
+
     <item
         android:id="@+id/refresh"
         android:icon="@drawable/ic_baseline_refresh_24"
