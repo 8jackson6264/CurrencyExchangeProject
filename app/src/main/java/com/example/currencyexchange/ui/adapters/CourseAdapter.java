@@ -66,7 +66,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         {
             holder.txtBaseCurrency.setText(coursesListFiltered.get(position).getBase());
             holder.btnLiked.setEnabled(true);
-            holder.btnLiked.setOnClickListener((v -> deleteCourse(position)));
+            holder.btnLiked.setOnClickListener((v -> deleteCourse(position, holder)));
         }
     }
 
@@ -77,9 +77,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         holder.btnLiked.setEnabled(true);
     }
 
-    private void deleteCourse(int position){
+    private void deleteCourse(int position, ViewHolder holder){
         service.deleteCourseByCourse(coursesListFiltered.get(position).getCourse());
         coursesListFiltered.remove(position);
+        holder.btnNotLiked.setEnabled(true);
         notifyDataSetChanged();
     }
 
