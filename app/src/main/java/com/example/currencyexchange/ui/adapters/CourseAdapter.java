@@ -4,6 +4,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
+public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> implements Filterable {
 
     List<Course> courses = new ArrayList<>();
 
@@ -40,6 +42,11 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return courses.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
