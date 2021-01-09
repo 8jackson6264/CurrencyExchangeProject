@@ -2,6 +2,7 @@ package com.example.currencyexchange.ui.fragments;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.SearchView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -39,6 +40,7 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
     public void onFragmentCreated() {
         exchangeRatesTabPresenterListener.setViewListener(this);
         setRecyclerView();
+        setSearchListener();
     }
 
     @Override
@@ -68,6 +70,21 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
 
     @Override
     public void setCourseAdapterListToEUR(List<Course> courses) {
+    }
 
+    private void setSearchListener(){
+        binding.searchField.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                courseAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                courseAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
 }
