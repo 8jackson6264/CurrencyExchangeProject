@@ -9,11 +9,10 @@ import java.util.List;
 public interface ExchangeRatesContract {
     interface ExchangeRatesTabPresenterListener {
         void setViewListener(ExchangeRatesContract.ExchangeRatesTabViewListener viewListener);
-        void getCoursesFromApi(Context context);
+        void getCoursesFromApi(Context context, String base);
     }
 
     interface ExchangeRatesTabViewListener {
-        void setCourseAdapterListToBGN(List<Course> courses);
-        void setCourseAdapterListToEUR(List<Course> courses);
+        void setCourseAdapterList(List<Course> courses);
     }
 }

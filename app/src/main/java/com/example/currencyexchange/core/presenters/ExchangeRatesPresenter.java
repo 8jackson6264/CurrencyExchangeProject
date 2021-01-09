@@ -32,32 +32,44 @@ public class ExchangeRatesPresenter implements ExchangeRatesContract.ExchangeRat
     }
 
     @Override
-    public void getCoursesFromApi(Context context) {
-        Api.getInstance().getAllExchangeRatesFromBGN(new Api.ApiListener() {
-            @Override
-            public void onExchangeRateReceived(ExchangeRate exchangeRate) {
-                coursesToBGN = CourseUtil.recastFromRatesToCourseList(exchangeRate.getRates());
-                exchangeRatesTabViewListener.setCourseAdapterListToBGN(coursesToBGN);
-            }
+    public void getCoursesFromApi(Context context, String base) {
+        if (base.equals("BGN")) {
+            if (!coursesToBGN.isEmpty()) {
+                exchangeRatesTabViewListener.setCourseAdapterList(coursesToBGN);
+            } else {
+                Api.getInstance().getAllExchangeRatesFromBGN(new Api.ApiListener() {
+                    @Override
+                    public void onExchangeRateReceived(ExchangeRate exchangeRate) {
+                        coursesToBGN = CourseUtil.recastFromRatesToCourseList(exchangeRate.getRates());
+                        exchangeRatesTabViewListener.setCourseAdapterList(coursesToBGN);
+                    }
 
-            @Override
-            public void onFailure() {
-                Toast.makeText(context, "Some error with the servers occurred", Toast.LENGTH_LONG).show();
+                    @Override
+                    public void onFailure() {
+                        Toast.makeText(context, "Some error with the servers occurred", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
-        });
+        }
 
-        Api.getInstance().getAllExchangeRatesFromEUR(new Api.ApiListener() {
-            @Override
-            public void onExchangeRateReceived(ExchangeRate exchangeRate) {
-                coursesToEuro = CourseUtil.recastFromRatesToCourseList(exchangeRate.getRates());
-               // exchangeRatesTabViewListener.setCourseAdapterListToEUR(coursesToEuro);
-            }
+        if (base.equals("EUR")) {
+            if (!coursesToEuro.isEmpty()) {
+                exchangeRatesTabViewListener.setCourseAdapterList(coursesToEuro);
+            } else {
+                Api.getInstance().getAllExchangeRatesFromEUR(new Api.ApiListener() {
+                    @Override
+                    public void onExchangeRateReceived(ExchangeRate exchangeRate) {
+                        coursesToEuro = CourseUtil.recastFromRatesToCourseList(exchangeRate.getRates());
+                        exchangeRatesTabViewListener.setCourseAdapterList(coursesToEuro);
+                    }
 
-            @Override
-            public void onFailure() {
-                Toast.makeText(context, "Some error with the servers occurred", Toast.LENGTH_LONG).show();
+                    @Override
+                    public void onFailure() {
+                        Toast.makeText(context, "Some error with the servers occurred", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
-        });
+        }
 
 
     }

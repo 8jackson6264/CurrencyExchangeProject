@@ -2,8 +2,10 @@ package com.example.currencyexchange.ui.fragments;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +27,7 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
     CourseAdapter courseAdapter;
     @Inject
     ExchangeRatesContract.ExchangeRatesTabPresenterListener exchangeRatesTabPresenterListener;
+    private String base = "BGN";
 
 
     @Inject
@@ -45,7 +48,31 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
 
     @Override
     public void setOptionsMenu(Menu menu) {
-        menu.getItem(1).setVisible(false);
+        menu.getItem(2).setVisible(false);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        if(base.equals("BGN")){
+            menu.getItem(1).setVisible(false);
+        } else if (base.equals("EUR")){
+            menu.getItem(0).setVisible(false);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.bgn) {
+            this.base = "BGN";
+            exchangeRatesTabPresenterListener.getCoursesFromApi(getContext(), base);
+            requireActivity().invalidateOptionsMenu();
+        } else if (item.getItemId() == R.id.eur) {
+            this.base = "EUR";
+            exchangeRatesTabPresenterListener.getCoursesFromApi(getContext(), base);
+            requireActivity().invalidateOptionsMenu();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setRecyclerView() {
@@ -58,21 +85,18 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
     @Override
     public void onResume() {
         super.onResume();
-        exchangeRatesTabPresenterListener.getCoursesFromApi(getContext());
+        exchangeRatesTabPresenterListener.getCoursesFromApi(getContext(), base);
 
     }
 
 
     @Override
-    public void setCourseAdapterListToBGN(List<Course> courses) {
+    public void setCourseAdapterList(List<Course> courses) {
         courseAdapter.setCourses(courses);
     }
 
-    @Override
-    public void setCourseAdapterListToEUR(List<Course> courses) {
-    }
 
-    private void setSearchListener(){
+    private void setSearchListener() {
         binding.searchField.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
