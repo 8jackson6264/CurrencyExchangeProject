@@ -1,15 +1,18 @@
 package com.example.currencyexchange.data.db;
 
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.example.currencyexchange.data.Course;
+
+import java.util.List;
 
 public interface CourseDAO {
 
     @Insert
-    void addCourse();
+    void addCourse(Course course);
     @Query("SELECT * FROM courses")
-    void getAll();
+    List<Course> getAll();
     @Query("DELETE FROM courses WHERE course = :course")
-    void deleteQuoteBy(double course);
+    void deleteQuoteByCourse(double course);
 }
