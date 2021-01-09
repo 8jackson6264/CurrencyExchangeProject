@@ -7,10 +7,13 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.data.Course;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+        coursesListFiltered = courses;
         notifyDataSetChanged();
     }
 
@@ -36,13 +40,13 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtCourse.setText(String.valueOf(courses.get(position).getCourse()));
-        holder.txtCurrency.setText(courses.get(position).getCurrencyName());
+        holder.txtCourse.setText(String.valueOf(coursesListFiltered.get(position).getCourse()));
+        holder.txtCurrency.setText(coursesListFiltered.get(position).getCurrencyName());
     }
 
     @Override
     public int getItemCount() {
-        return courses.size();
+        return coursesListFiltered.size();
     }
 
     @Override
@@ -56,7 +60,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
                 } else {
                     List<Course> filteredList = new ArrayList<>();
                     for (Course row : courses) {
-                        if (row.getCurrencyName().toLowerCase().contains(charString.toLowerCase())) {
+                        if (row.getCurrencyName().toLowerCase().contains(charString.toLowerCase())){
                             filteredList.add(row);
                         }
                     }
@@ -71,7 +75,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                courses = (ArrayList<Course>) filterResults.values;
+                coursesListFiltered = (ArrayList<Course>) filterResults.values;
                 notifyDataSetChanged();
             }
         };
