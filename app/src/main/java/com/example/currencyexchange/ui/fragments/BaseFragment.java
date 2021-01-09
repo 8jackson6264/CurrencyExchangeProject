@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.currencyexchange.R;
 
@@ -47,4 +48,6 @@ public abstract class BaseFragment <T extends ViewDataBinding> extends DaggerFra
         inflater.inflate(R.menu.main_menu, menu);
         setOptionsMenu(menu);
     }
+
+
 }
