@@ -1,4 +1,6 @@
 package com.example.currencyexchange.core.presenters;
 
-public class SavedCoursesPresenter {
+import com.example.currencyexchange.core.contracts.SavedCoursesContract;
+
+public class SavedCoursesPresenter implements SavedCoursesContract.SavedCoursesTabPresenterListener {
 }

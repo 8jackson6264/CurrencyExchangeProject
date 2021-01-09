@@ -3,6 +3,7 @@ package com.example.currencyexchange.utils;
 import com.example.currencyexchange.data.Course;
 import com.example.currencyexchange.data.Rates;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,14 @@ public class CourseUtil {
         courses.add(new Course("ILS", rates.getIsraeliNewShekel()));
         courses.add(new Course("KRW", rates.getSouthKoreanWon()));
         courses.add(new Course("PLN", rates.getPolishZloty()));
+        roundCoursesToSecondDecimalDigit(courses);
         return courses;
+
+    }
+    private static void roundCoursesToSecondDecimalDigit(List<Course>courses){
+        DecimalFormat decimalFormat = new DecimalFormat("####0.00");
+        for (Course course:courses
+             ) {course.setCourse((Double.parseDouble(decimalFormat.format(course.getCourse()))));
+        }
     }
 }

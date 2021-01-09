@@ -4,20 +4,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.data.Course;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
+
+public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> implements Filterable {
 
     List<Course> courses = new ArrayList<>();
+    List<Course> coursesListFiltered = new ArrayList<>();
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+        coursesListFiltered = courses;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -31,13 +40,45 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtCourse.setText(String.valueOf(courses.get(position).getCourse()));
-        holder.txtCurrency.setText(courses.get(position).getCurrencyName());
+        holder.txtCourse.setText(String.valueOf(coursesListFiltered.get(position).getCourse()));
+        holder.txtCurrency.setText(coursesListFiltered.get(position).getCurrencyName());
     }
 
     @Override
     public int getItemCount() {
-        return courses.size();
+        return coursesListFiltered.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    coursesListFiltered = courses;
+                } else {
+                    List<Course> filteredList = new ArrayList<>();
+                    for (Course row : courses) {
+                        if (row.getCurrencyName().toLowerCase().contains(charString.toLowerCase())){
+                            filteredList.add(row);
+                        }
+                    }
+
+                    coursesListFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = coursesListFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                coursesListFiltered = (ArrayList<Course>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -1,5 +1,7 @@
 package com.example.currencyexchange.ui.fragments;
 
+import android.view.Menu;
+
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.databinding.TabSavedCoursesBinding;
 
@@ -15,4 +17,15 @@ public class SavedCoursesTab extends BaseFragment<TabSavedCoursesBinding> {
     public int getLayoutRes() {
         return R.layout.tab_saved_courses;
     }
+
+    @Override
+    public void onFragmentCreated() {
+
+    }
+
+    @Override
+    public void setOptionsMenu(Menu menu) {
+        menu.getItem(0).setVisible(false);
+    }
+
 }

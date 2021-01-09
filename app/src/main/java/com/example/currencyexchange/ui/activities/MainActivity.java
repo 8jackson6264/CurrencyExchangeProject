@@ -30,11 +30,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         return R.layout.activity_main;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+
 
     private void managingTabs() {
         TabAdapter tabAdapter = new TabAdapter(this.getSupportFragmentManager(), getLifecycle(),
