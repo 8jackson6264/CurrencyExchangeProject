@@ -1,8 +1,11 @@
 package com.example.currencyexchange.data.db;
 
 import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
-@Database(entities = {}, version = 2)
-public abstract class AppDB {
+import com.example.currencyexchange.data.Course;
 
+@Database(entities = {Course.class}, version = 2)
+public abstract class AppDB extends RoomDatabase {
+    public abstract CourseDAO courseDAO();
 }

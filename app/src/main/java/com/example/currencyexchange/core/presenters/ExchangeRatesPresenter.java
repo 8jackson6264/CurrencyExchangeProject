@@ -42,6 +42,7 @@ public class ExchangeRatesPresenter implements ExchangeRatesContract.ExchangeRat
                     public void onExchangeRateReceived(ExchangeRate exchangeRate) {
                         coursesToBGN = CourseUtil.recastFromRatesToCourseList(exchangeRate.getRates());
                         exchangeRatesTabViewListener.setCourseAdapterList(coursesToBGN);
+
                     }
 
                     @Override

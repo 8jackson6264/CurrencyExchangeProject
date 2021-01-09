@@ -1,18 +1,15 @@
 package com.example.currencyexchange.ui.fragments;
 
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.currencyexchange.R;
 import com.example.currencyexchange.core.contracts.ExchangeRatesContract;
-import com.example.currencyexchange.core.presenters.ExchangeRatesPresenter;
 import com.example.currencyexchange.data.Course;
 import com.example.currencyexchange.databinding.TabExchangeRatesBinding;
 import com.example.currencyexchange.ui.adapters.CourseAdapter;
@@ -65,10 +62,12 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.bgn) {
             this.base = "BGN";
+            Toast.makeText(getContext(), "Data have been updated", Toast.LENGTH_SHORT).show();
             exchangeRatesTabPresenterListener.getCoursesFromApi(getContext(), base);
             requireActivity().invalidateOptionsMenu();
         } else if (item.getItemId() == R.id.eur) {
             this.base = "EUR";
+            Toast.makeText(getContext(), "Data have been updated", Toast.LENGTH_SHORT).show();
             exchangeRatesTabPresenterListener.getCoursesFromApi(getContext(), base);
             requireActivity().invalidateOptionsMenu();
         }
@@ -78,7 +77,7 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
     private void setRecyclerView() {
         binding.exchangeRatesRecyclerView.setLayoutManager(
                 new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        courseAdapter = new CourseAdapter();
+        courseAdapter = new CourseAdapter(getContext());
         binding.exchangeRatesRecyclerView.setAdapter(courseAdapter);
     }
 
@@ -93,6 +92,8 @@ public class ExchangeRatesTab extends BaseFragment<TabExchangeRatesBinding>
     @Override
     public void setCourseAdapterList(List<Course> courses) {
         courseAdapter.setCourses(courses);
+        courseAdapter.setBase(base);
+        courseAdapter.setCourseAdapterInExchangeRatesTabUsed(true);
     }
 
 

@@ -1,5 +1,10 @@
 package com.example.currencyexchange.ui.activities;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,10 +27,31 @@ public abstract class BaseActivity <T extends ViewDataBinding> extends DaggerApp
         setTheme(R.style.AppTheme);
         setContentView(getLayoutRes());
         binding = DataBindingUtil.setContentView(this, getLayoutRes());
+        setDialogAlertForNetworkDisconnection();
         onActivityCreated();
 
     }
     protected abstract void onActivityCreated();
     protected abstract int getLayoutRes();
 
+    public boolean isNetworkConnected(){
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
+    }
+
+    public void setDialogAlertForNetworkDisconnection() {
+        if (!isNetworkConnected()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Check your internet connection and try again")
+                    .setTitle("Not connected").setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    recreate();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+    }
 }
